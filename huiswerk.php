@@ -2,6 +2,8 @@
 <?php 
 include_once './classes/ELOdb.php'; 
 $db = new ELOdb();
+
+session_start();
 ?>
 <html lang="nl">
 <head>
@@ -14,7 +16,7 @@ $db = new ELOdb();
     <h1>Huiswerk</h1>
     <?php 
     //Haal huiswerk op voor bepaalde student (nummer nog te vervangen voor doorgegeven studentId)
-    $huiswerk = $db->selectHomework(1);
+    $huiswerk = $db->selectHomework($_SESSION["StudentId"]);
     
     //Loop door de array met verschillende huiswerkopdracht
     foreach($huiswerk as $opdracht) {

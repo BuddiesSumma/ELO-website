@@ -3,8 +3,10 @@
 include_once './classes/ELOdb.php'; 
 $db = new ELOdb();
 
+session_start();
+
 //Haal persoonsgegevens op voor bepaalde student (nummer nog te vervangen voor doorgegeven studentId)
-$student = $db->selectStudentByStudentId(1)
+$student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
 ?>
 <html lang="nl">
 <head>

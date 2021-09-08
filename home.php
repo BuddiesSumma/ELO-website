@@ -8,5 +8,7 @@
 </head>
 <body>
     <h1>Hallo!</h1>
+    <a href="huiswerk.php">Huiswerk</a>
+    <a href="persoonsgegevens.php">Persoonsgegevens</a>
 </body>
 </html>

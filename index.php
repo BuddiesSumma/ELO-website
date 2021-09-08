@@ -12,6 +12,10 @@ if (isset($_POST['uname']) && isset($_POST['psw']) ) {
 
     //Als wachtwoord uit de database gelijk is aan het ingevoerde password
     if ($password == $_POST['psw']) {
+        //Start session
+        session_start();
+        //Maak een session variabele met daarin de StudentId
+        $_SESSION["StudentId"] = $student['StudentId'];
         header('Location: ./home.php');
     }
     else {
