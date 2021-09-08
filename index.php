@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+include_once './classes/ELOdb.php'; 
+$db = new ELOdb();
+?>
 <html lang="nl">
 
 <head>
@@ -11,13 +15,19 @@
 
 <body>
     <?php
+    //Controleer of Username en password in de POST zijn gezet
     if (isset($_POST['uname']) && isset($_POST['psw']) ) {
-        $username = $_POST['uname'];
-        $password = $_POST['psw'];
 
-    if ($username == "Piet" && $password == "PSW" ) {
-        header('Location: /loginpagina/home.php');
-    }
+        //Haal wachtwoord op die bij de username hoort
+        $password = $db->selectPassword($_POST['uname']);
+
+        //Als wachtwoord uit de database gelijk is aan het ingevoerde password
+        if ($password == $_POST['psw']) {
+            header('Location: ./home.php');
+        }
+        else {
+            echo "onjuist wachtwoord!";
+        }
     }
     
     ?>
