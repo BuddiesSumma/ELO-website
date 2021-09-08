@@ -18,8 +18,9 @@ $db = new ELOdb();
     //Controleer of Username en password in de POST zijn gezet
     if (isset($_POST['uname']) && isset($_POST['psw']) ) {
 
-        //Haal wachtwoord op die bij de username hoort
-        $password = $db->selectPassword($_POST['uname']);
+        //Haal student op die bij de username hoort
+        $student = $db->selectStudentByEmail($_POST['uname']);
+        $password = $student['Wachtwoord'];
 
         //Als wachtwoord uit de database gelijk is aan het ingevoerde password
         if ($password == $_POST['psw']) {
