@@ -20,13 +20,13 @@ $db = new ELOdb();
 
         //Haal wachtwoord op die bij de username hoort
         $password = $db->selectPassword($_POST['uname']);
-        
-        var_dump($password);
-        var_dump($_POST['psw']);
 
         //Als wachtwoord uit de database gelijk is aan het ingevoerde password
-        if ($password[0] == $_POST['psw']) {
+        if ($password == $_POST['psw']) {
             header('Location: ./home.php');
+        }
+        else {
+            echo "onjuist wachtwoord!";
         }
     }
     
@@ -37,7 +37,7 @@ $db = new ELOdb();
             <input type="text" placeholder="Enter Username" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="text" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" required>
 
             <button type="submit">Login</button>
             <label>

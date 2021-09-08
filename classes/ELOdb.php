@@ -23,10 +23,10 @@
             $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
             
             //Geef eerste van rows terug
-            if($rows != null) {
-            return $rows[0];
+            if($rows != null)
+                return $rows[0]['wachtwoord'];
             }
-        } catch (PDOException $e) {
+        catch (PDOException $e) {
             return false;
         }
     }
