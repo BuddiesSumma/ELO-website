@@ -2,6 +2,26 @@
 <?php 
 include_once './classes/ELOdb.php'; 
 $db = new ELOdb();
+
+//Controleer of Username en password in de POST zijn gezet
+if (isset($_POST['uname']) && isset($_POST['psw']) ) {
+
+    //Haal student op die bij de username hoort
+    $student = $db->selectStudentByEmail($_POST['uname']);
+    $password = $student['Wachtwoord'];
+
+    //Als wachtwoord uit de database gelijk is aan het ingevoerde password
+    if ($password == $_POST['psw']) {
+        //Start session
+        session_start();
+        //Maak een session variabele met daarin de StudentId
+        $_SESSION["StudentId"] = $student['StudentId'];
+        header('Location: ./home.php');
+    }
+    else {
+        echo "onjuist wachtwoord!";
+    }
+}
 ?>
 <html lang="nl">
 
@@ -14,24 +34,6 @@ $db = new ELOdb();
 </head>
 
 <body>
-    <?php
-    //Controleer of Username en password in de POST zijn gezet
-    if (isset($_POST['uname']) && isset($_POST['psw']) ) {
-
-        //Haal student op die bij de username hoort
-        $student = $db->selectStudentByEmail($_POST['uname']);
-        $password = $student['Wachtwoord'];
-
-        //Als wachtwoord uit de database gelijk is aan het ingevoerde password
-        if ($password == $_POST['psw']) {
-            header('Location: ./home.php');
-        }
-        else {
-            echo "onjuist wachtwoord!";
-        }
-    }
-    
-    ?>
     <form method="post">
         <div >
             <label for="uname"><b>Username</b></label>
