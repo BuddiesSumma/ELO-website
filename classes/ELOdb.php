@@ -6,12 +6,12 @@
     const PASSWD = ""; 
 
     //Selecteer wachtwoord
-    function selectPassword($username) {
+    function selectStudentByEmail($username) {
         try {
             $pdo = new PDO(self::DSN, self::USER, self::PASSWD);
 
             //Maak nieuwe SQL query
-            $statement = $pdo->prepare("SELECT `wachtwoord` FROM `student` WHERE `email` = :username");
+            $statement = $pdo->prepare("SELECT * FROM `student` WHERE `email` = :username");
 
             //Koppel parameter
             $statement->bindValue(":username", $username, PDO::PARAM_STR);
@@ -24,7 +24,7 @@
             
             //Geef eerste van rows terug
             if($rows != null)
-                return $rows[0]['wachtwoord'];
+                return $rows[0];
             }
         catch (PDOException $e) {
             return false;
