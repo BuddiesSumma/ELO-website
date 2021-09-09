@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php 
+include_once './classes/ELOdb.php'; 
+$db = new ELOdb();
+
 //Start session
 session_start();
 //Als StudentId niet gezet is
@@ -17,6 +20,9 @@ if (isset($_GET['logout'])){
     //Stuur gebruiker door naar de loginpagina
     header('Location: ./');
 }
+
+//Haal persoonsgegevens op voor bepaalde student
+$student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
 ?>
 <html lang="nl">
 <head>
@@ -26,7 +32,7 @@ if (isset($_GET['logout'])){
     <title>Home</title>
 </head>
 <body>
-    <h1>Hallo!</h1>
+    <h1>Hallo <?php echo $student['Voornaam']; ?>!</h1>
     <a href="huiswerk.php">Huiswerk</a>
     <a href="cijfers.php">Cijfers</a>
     <a href="persoonsgegevens.php">Persoonsgegevens</a>

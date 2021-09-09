@@ -12,7 +12,7 @@ if(!isset($_SESSION["StudentId"])) {
     //Stop met uitvoeren
     die();
 }
-//Haal persoonsgegevens op voor bepaalde student (nummer nog te vervangen voor doorgegeven studentId)
+//Haal persoonsgegevens op voor bepaalde student
 $student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
 ?>
 <html lang="nl">
@@ -21,7 +21,7 @@ $student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Persoonsgegevens</title>
-    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <div class="persinfo">
