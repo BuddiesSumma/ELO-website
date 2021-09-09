@@ -1,13 +1,12 @@
-<?php $activePage = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME); ?>
-<aside>
-    <div id="title">
-        <h1>ELO</h1>
-    </div>
-    <nav>
-        <a href="home.php" <?php if ($activePage == "home") echo 'class="active"'; ?>>Home</a>
-        <a href="huiswerk.php" <?php if ($activePage == "huiswerk") echo 'class="active"'; ?>>Huiswerk</a>
-        <a href="cijfers.php" <?php if ($activePage == "cijfers") echo 'class="active"'; ?>>Cijfers</a>
-        <a href="persoonsgegevens.php" <?php if ($activePage == "persoonsgegevens") echo 'class="active"'; ?>>Persoonsgegevens</a>
-        <a href="?logout">Uitloggen</a>
-    </nav>
-</aside>
+<div class="wrapperitem3">
+    <img src="afb\logo-eduarte@2x.png">
+</div>
+<div class="wrapperitem1">
+    <ul>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="huiswerk.php">Huiswerk</a></li>
+        <li><a href="cijfers.php">Cijferlijst</a></li>
+        <li><a href="persoonsgegevens.php">Gegevens</a></li>
+        <li><a href="?logout">Uitloggen</a></li>
+    </ul>
+</div>

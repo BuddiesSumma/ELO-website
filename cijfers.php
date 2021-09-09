@@ -22,45 +22,43 @@ if (isset($_GET['logout'])) {
 }
 ?>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cijfers</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-    <div id="grid-container">
-        <?php include 'menu.php'; ?>
-        <div class="bar"></div>
-        <main>
-            <div class="info">
-                <h1>Cijfers</h1>
-            </div>
-                <?php
+<body class="wrapper">
+    <?php include 'menu.php';?>
+    <div class="wrapperitem2">
+        <article>
+        <h1>Cijferlijst</h1>
+        <?php
                 //Haal cijfers op van bepaalde student
                 $cijfers = $db->selectGrades($_SESSION["StudentId"]);
 
-                //Loop door de array met verschillende cijfers
-                foreach ($cijfers as $cijfer) {
-                    echo "<div class='info'>
-                    <table class='cijfers'><tr class='vak'>";
-                    echo "<td>" . $cijfer['VakNaam'] . "</td>";
-                    echo "<td style='text-align: right'>" . $cijfer['Cijfer'] . "</td>";
-                    echo "</tr></table></div>";
+                if($cijfers != null) {
+                    echo "<table class='cijfers'>";
+                    //Loop door de array met verschillende cijfers
+                    foreach ($cijfers as $cijfer) {
+                        echo "<tr>";
+                        echo "<td>" . $cijfer['VakNaam'] . "</td>";
+                        echo "<td style='text-align: right;'>" . $cijfer['Cijfer'] . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
                 }
 
                 if ($cijfers == null) {
                     //Laat zien dat er geen cijfers beschikbaar zijn
-                    echo "<div class='info'>";
                     echo "<h2>Geen cijfers ingevoerd!</h2>";
-                    echo "</div>";
                 }
                 ?>
-        </main>
+        </article>
     </div>
+
 </body>
 
 </html>

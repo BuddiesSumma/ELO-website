@@ -25,39 +25,36 @@ if (isset($_GET['logout'])) {
 $student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
 ?>
 <html lang="nl">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-    <div id="grid-container">
-        <?php include 'menu.php'; ?>
-        <div class="bar"></div>
-        <main>
-            <div class="info">
-                <h1>Hallo <?php echo $student['Voornaam']; ?>!</h1>
-            </div>
-
-            <article class="info">
-                <h2>Titel</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum dui auctor, tristique erat in, euismod dui. Sed vitae mi vel erat finibus scelerisque sit amet eu mauris. Nunc varius condimentum risus in vehicula. Vestibulum tempus massa sit amet mauris finibus hendrerit. Duis dui libero, commodo quis iaculis vel, tristique at nunc. Aliquam luctus leo ut nulla tincidunt bibendum. Pellentesque eleifend congue odio, sit amet faucibus velit volutpat et. Maecenas facilisis tempus mi, non congue lectus tristique quis. Aliquam id tempor eros. Cras maximus ornare iaculis. Curabitur dui nisl, auctor ut quam eu, finibus congue ante. Vestibulum lorem eros, blandit egestas tempor ut, vehicula ut felis. Maecenas blandit tellus quam, ac luctus ante hendrerit malesuada. Maecenas nec varius odio. Donec quis libero mauris.
-                </p>
-            </article>
-
-            <article class="info">
-                <h2>Titel</h2>
-                <p>
-                    In sed erat molestie, convallis diam quis, fringilla augue. Nulla facilisi. Quisque bibendum pellentesque justo quis tristique. Quisque vestibulum efficitur condimentum. Sed elementum venenatis tincidunt. Sed eu metus eu arcu malesuada maximus porta nec urna. Cras augue ante, mollis a velit a, posuere suscipit nibh.
-                </p>
-            </article>
-        </main>
+<body class="wrapper">
+    <?php include 'menu.php';?>
+    <div class="wrapperitem2">
+        <article>
+            <h1>Home</h1>
+                    <h2>Hallo <?php echo $student['Voornaam']; ?>!</h2>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    <br></br>
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        </article>
     </div>
+
 </body>
 
 </html>

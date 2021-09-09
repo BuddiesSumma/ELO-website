@@ -28,7 +28,7 @@ else if (isset($_POST['uname']) && isset($_POST['psw']) ) {
     }
     else {
         //Laat foutmelding zien
-        $error = "<p style='color: #FF3232;'>Onjuiste logingegevens!</p>";
+        $error = "<label style='color: #FF3232;'>Onjuiste logingegevens!</label>";
     }
 }
 ?>
