@@ -3,22 +3,29 @@
 include_once './classes/ELOdb.php'; 
 $db = new ELOdb();
 
+//Start session
+session_start();
+//Als de sessionwaarde met StudentId al gezet is
+if(isset($_SESSION["StudentId"])) {
+    //Stuur gebruiker door naar de homepagina
+    header('Location: ./home.php');
+}
 //Controleer of Username en password in de POST zijn gezet
-if (isset($_POST['uname']) && isset($_POST['psw']) ) {
-
+else if (isset($_POST['uname']) && isset($_POST['psw']) ) {
     //Haal student op die bij de username hoort
     $student = $db->selectStudentByEmail($_POST['uname']);
+    //Zet wachtwoord van de student in $password
     $password = $student['Wachtwoord'];
 
     //Als wachtwoord uit de database gelijk is aan het ingevoerde password
     if ($password == $_POST['psw']) {
-        //Start session
-        session_start();
         //Maak een session variabele met daarin de StudentId
         $_SESSION["StudentId"] = $student['StudentId'];
+        //Stuur gebruiker door naar de homepagina
         header('Location: ./home.php');
     }
     else {
+        //Laat foutmelding zien
         echo "onjuist wachtwoord!";
     }
 }

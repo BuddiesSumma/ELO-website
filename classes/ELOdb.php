@@ -59,7 +59,10 @@
             $pdo = new PDO(self::DSN, self::USER, self::PASSWD);
 
             //Maak nieuwe SQL query
-            $statement = $pdo->prepare("SELECT huiswerk.HuiswerkBeschrijving, huiswerk.HuiswerkDatum, vak.VakNaam FROM `huiswerk` INNER JOIN `student` ON huiswerk.KlasId = student.KlasId INNER JOIN `vak` ON Huiswerk.HuiswerkId = vak.VakId WHERE student.StudentId = :studentId ORDER BY huiswerk.HuiswerkDatum ASC");
+            $statement = $pdo->prepare("SELECT huiswerk.HuiswerkBeschrijving, huiswerk.HuiswerkDatum, vak.VakNaam 
+            FROM `huiswerk`
+            INNER JOIN `vak` ON huiswerk.VakId = vak.VakId
+            INNER JOIN `student` ON huiswerk.KlasId = student.KlasId WHERE student.StudentId = :studentId ORDER BY huiswerk.HuiswerkDatum ASC");
 
             //Koppel parameter
             $statement->bindValue(":studentId", $studentId, PDO::PARAM_STR);
@@ -73,6 +76,30 @@
             //Geef rows terug
             return $rows;
             }
+        catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    function selectGrades($studentId) {
+        try {
+            $pdo = new PDO(self::DSN, self::USER, self::PASSWD);
+
+            //Maak nieuwe SQL query
+            $statement = $pdo->prepare("SELECT cijfer.Cijfer, vak.VakNaam FROM `cijfer` INNER JOIN `student` ON cijfer.StudentId = student.StudentId INNER JOIN `vak` ON cijfer.VakId = vak.VakId WHERE student.StudentId = :studentId ORDER BY vak.VakNaam ASC");
+
+            //Koppel parameter
+            $statement->bindValue(":studentId", $studentId, PDO::PARAM_STR);
+
+            //Voer statement uit
+            $statement->execute();
+
+            //Zorg dat data als associative array in $rows komt te staan
+            $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            //Geef rows terug
+            return $rows;
+        }
         catch (PDOException $e) {
             return false;
         }

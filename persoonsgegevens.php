@@ -3,8 +3,15 @@
 include_once './classes/ELOdb.php'; 
 $db = new ELOdb();
 
+//Start session
 session_start();
-
+//Als StudentId niet gezet is
+if(!isset($_SESSION["StudentId"])) {
+    //Stuur door naar de loginpagina
+    header('Location: ./');
+    //Stop met uitvoeren
+    die();
+}
 //Haal persoonsgegevens op voor bepaalde student (nummer nog te vervangen voor doorgegeven studentId)
 $student = $db->selectStudentByStudentId($_SESSION["StudentId"]);
 ?>
