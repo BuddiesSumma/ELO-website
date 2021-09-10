@@ -42,11 +42,21 @@ if (isset($_GET['logout'])) {
                 if($cijfers != null) {
                     echo "<table class='cijfers'>";
                     //Loop door de array met verschillende cijfers
-                    foreach ($cijfers as $cijfer) {
-                        echo "<tr>";
-                        echo "<td>" . $cijfer['VakNaam'] . "</td>";
-                        echo "<td style='text-align: right;'>" . $cijfer['Cijfer'] . "</td>";
-                        echo "</tr>";
+                    foreach ($cijfers as $cijfer)
+                    {
+                        if ($cijfer['HuiswerktIsToets'] == true)
+                        {
+                            $vakken = $db->selectVak($cijfer["vakId"]);
+                            foreach ($vakken as $vak){
+                                echo "<tr>";
+                                echo "<tr>" . "<span class='extra_info'>" . $cijfer['HuiswerkBeschrijving'] . "&nbsp &nbsp &nbsp &nbsp &nbsp" . $cijfer['HuiswerkDatum'] . ":</span></tr>";
+                                echo "<td>" . $vak['VakNaam'] . "</td>";
+                                echo "<td style='text-align: right;'>" . $cijfer['Cijfer'] . "</td>";
+                                echo "</tr>";
+                            }
+
+                        }
+
                     }
                     echo "</table>";
                 }
