@@ -40,7 +40,6 @@ if (isset($_GET['logout'])) {
                 $cijfers = $db->selectGrades($_SESSION["StudentId"]);
 
                 if($cijfers != null) {
-
                     echo "<table class='cijfers'>";
                     //Loop door de array met verschillende cijfers
                     foreach ($cijfers as $cijfer)
@@ -57,6 +56,7 @@ if (isset($_GET['logout'])) {
                             }
 
                         }
+
                     }
                     echo "</table>";
                 }

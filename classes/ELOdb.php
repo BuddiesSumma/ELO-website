@@ -86,7 +86,9 @@
             $pdo = new PDO(self::DSN, self::USER, self::PASSWD);
 
             //Maak nieuwe SQL query
+
             $statement = $pdo->prepare("SELECT cijfer.Cijfer, huiswerk.HuiswerktIsToets, huiswerk.HuiswerkId, huiswerk.vakId, huiswerk.HuiswerkBeschrijving, huiswerk.HuiswerkDatum FROM `cijfer` INNER JOIN `student` ON cijfer.StudentId = student.StudentId INNER JOIN `huiswerk` on cijfer.HuiswerkId = huiswerk.HuiswerkId WHERE student.StudentId = :studentId");
+
 
             //Koppel parameter
             $statement->bindValue(":studentId", $studentId, PDO::PARAM_STR);
